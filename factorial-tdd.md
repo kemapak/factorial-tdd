@@ -19,94 +19,182 @@ Also `1! = 1` and `0! = 1` keep this in mind.
 
 ## Lets' implement factorial in TDD! 
 
+I will be **very verbose**, and try to mimic actual development iterations and steps. The code will not be optimized until we are done. Then we will do the refactoring, which I will also show.
+
+Let's start!
+
 Do not think about the code! Think about the use cases and tests 
 
 **Do not think about the code! You still are! :)**
 
 Think about one and only one example, one simple use case, a simple happy path. Think it's result, what should it be. Write the test for it than the code.
 
-1. __Given x = 0, then the factorial should be 1__
-	1. Write the test, run the test. Test fails... See `/test/index.01.test.js` 
-	>
-```javascript
-test('0! should be 1', () => {
+- __Given x = 0, then the factorial should be 1__
+	
+	1. Write the test, run the test. Test fails... See `/test/index.01.test.js` We should not even create the file for the actual file at this stage.
+
+		```javascript
+		test('0! should be 1', () => {
 			expect(factorial(0)).toBe(1);
-});
-```
+		});
+		```
 
-	1. Write the code, run the test (fix the code until the test passes) See `/src/index.01.js`
->
-```javascript
-if (0 === pNumber) {
+	1. Now we write the code, run the test (fix the code until the test passes) See `/src/index.01.js`
+
+		```javascript
+		if (0 === pNumber) {
 			return 1;
-}
-```
-
-1. Repeat for __Given x = 1, then the factorial should be 1__
+		}
+		```
+---
+- Repeat for __Given x = 1, then the factorial should be 1__
 
 	1. Write the test, run the test. Test fails... See `/test/index.02.test.js`
 
+		```javascript
+		test('1! should be 1', () => {
+			expect(factorial(1)).toBe(1);
+		});
+		```
+		
 	1. Write the code, run the test (fix the code until the test passes)
 See `/src/index.02.js`
 
-1. Repeat for __Given x = 5, then the factorial should be 120 (5 * 4 * 3 * 2 *  1)__
+		```javascript
+		if (1 === pNumber) {
+			return 1;
+		}
+		```
+---
+- Repeat for __Given x = 5, then the factorial should be 120 (5 * 4 * 3 * 2 *  1)__
+
 	1. Write the test, run the test. Test fails... See `/test/index.03.test.js`
 
+		```javascript
+		test('5! should be 120', () => {
+			expect(factorial(5)).toBe(120);
+		});
+		```
+    
 	1. Write the code, run the test (fix the code until the test passes)
 See `/src/index.03.js`
->
-```javascript
-if (pNumber > 1) {
-			return pNumber * factorial(pNumber - 1);
-}
-```
 
+		```javascript
+		if (pNumber > 1) {
+			return pNumber * factorial(pNumber - 1);
+		}
+		```
 
 ## How about the exceptions, negative use cases?
 
-1. Repeat for __Given x = -1, should throw an exception. (negative number)__
+- Repeat for __Given x = -1, should throw an exception. (negative number)__
 
-	1. Write the test, run the test. Test fails... See `/test/index.04.test.js` _Please note: when checking if the method throws an exception, it has to be wrapped into a function, since JEST cannot accept methods with parameters, that throws an exception. (We will refactor this in the future steps)_
->
-```javascript
-function wrapper() {
-			factorial(-5);
-}
-```
-\
+	1. Write the test, run the test. Test fails... See `/test/index.04.test.js` 
+	> Please note: when checking if the method throws an exception, it has to be wrapped into a function, since JEST cannot accept methods with parameters, that throws an exception. (We will refactor this in the future steps as well.)
+
+		```javascript
+		test('Negative parameter should throw an exception.', () => {
+			function wrapper() {
+				factorial(-5);
+			}
+			expect(wrapper).toThrow('-5 is a negative number.');
+		});		
+		```
+
 	1. Write the code, run the test (fix the code until the test passes)
 See `/src/index.04.js`
->
-```javascript
-if (pNumber < 0) {
-    throw new Error(pNumber + ' is a negative number.');
-}
-```
 
-1. Repeat for __Given x = 2.3, should throw an exception. (floating number)__
+		```javascript
+		if (pNumber < 0) {
+			throw new Error(pNumber + ' is a negative number.');
+		}
+		```
+---
+- Repeat for __Given x = 2.3, should throw an exception. (floating number)__
 	1. Write the test, run the test. Test fails... See `/test/index.05.test.js`
+
+		```javascript
+		test('Decimal parameter should throw an exception.', () => {
+			function wrapper() {
+				factorial(2.3);
+			}
+			expect(wrapper).toThrow('2.3 is a decimal number.');
+		});
+		```
 
 	1. Write the code, run the test (fix the code until the test passes)
 See `/src/index.05.js`
 
-1. Repeat for __Given x = “x”, should throw an exception. (string)__
+		```javascript
+		if (pNumber !== Math.trunc(pNumber)) {
+			throw new Error(pNumber + ' is a decimal number.');
+		}
+		```
+---
+- Repeat for __Given x = “x”, should throw an exception. (string)__
 	1. Write the test, run the test. Test fails... See `/test/index.06.test.js`
+
+		```javascript
+		test('String parameter should throw an exception.', () => {
+			function wrapper() {
+				factorial('x');
+			}
+			expect(wrapper).toThrow('x is not a number.');
+		});
+		```
 
 	1. Write the code, run the test (fix the code until the test passes)
 See `/src/index.06.js`
-1. Repeat for __Given x = true, should throw an exception (boolean)__
+
+		```javascript
+		if ('string' === typeof pNumber) {
+			throw new Error(pNumber + ' is not a number.');
+		}
+		```
+---
+- Repeat for __Given x = true, should throw an exception (boolean)__
 	1. Write the test, run the test. Test fails... See `/test/index.07.test.js`
+
+		```javascript
+		test('Boolean parameter should throw an exception.', () => {
+			function wrapper() {
+				factorial(true);
+			}
+			expect(wrapper).toThrow('true is not a number.');
+		});
+		```
 
 	1. Write the code, run the test (fix the code until the test passes)
 See `/src/index.07.js`
 
-1. Repeat for __Given x = undefined, should throw an exception (undefined)__
+		```javascript
+		if ('boolean' === typeof pNumber) {
+			throw new Error(pNumber + ' is not a number.');
+		}
+		```
+---
+- Repeat for __Given x = undefined, should throw an exception (undefined)__
 	1. Write the test, run the test. Test fails... See `/test/index.08.test.js`
+
+		```javascript
+		test('Undefined parameter should throw an exception.', () => {
+			function wrapper() {
+				factorial();
+			}
+			expect(wrapper).toThrow('undefined is not a number.');
+		});
+		```
 
 	1. Write the code, run the test (fix the code until the test passes)
 See `/src/index.08.js`
 
-1. Repeat for __Given x = null, should throw an exception (null)__
+		```javascript
+		if ('undefined' === typeof pNumber) {
+			throw new Error(pNumber + ' is not a number.');
+		}
+		```
+---
+- Repeat for __Given x = null, should throw an exception (null)__
 	1. Write the test, run the test. Test fails... See `/test/index.09.test.js`
 
 	1. Write the code, run the test (fix the code until the test passes)
