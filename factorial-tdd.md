@@ -89,8 +89,7 @@ See `/src/index.03.js`
 
 - Repeat for __Given x = -1, should throw an exception. (negative number)__
 
-	1. Write the test, run the test. Test fails... See `/test/index.04.test.js` 
-	> Please note: when checking if the method throws an exception, it has to be wrapped into a function, since JEST cannot accept methods with parameters, that throws an exception. (We will refactor this in the future steps as well.)
+	1. Write the test, run the test. Test fails... See `/test/index.04.test.js` _Please note: when checking if the method throws an exception, it has to be wrapped into a function, since JEST cannot accept methods with parameters, that throws an exception. (We will refactor this in the future steps as well.)_
 
 		```javascript
 		test('Negative parameter should throw an exception.', () => {
