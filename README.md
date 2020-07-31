@@ -57,12 +57,9 @@ Distributed under the MIT license. See (LICENSE)[LICENSE.MD] for more informatio
 I am hoping the code and article I shared is helpful. You can always reach me for any questions, comments.
 
 Kem Apak
-
-:[http://www.softwarenotes.net](http://www.softwarenotes.net)
-
-:[@softwarenotes](https://twitter.com/softwarenotes)
-
-:[https://github.com/kemapak](https://github.com/kemapak)
+: [http://www.softwarenotes.net](http://www.softwarenotes.net)
+: [@softwarenotes](https://twitter.com/softwarenotes)
+: [https://github.com/kemapak](https://github.com/kemapak)
 
 
 
