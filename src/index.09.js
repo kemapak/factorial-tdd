@@ -1,5 +1,9 @@
 function factorial(pNumber) {
 
+    if (null === pNumber) {
+        throw new Error(pNumber + ' is not a number.');
+    }
+
     if (undefined === pNumber) {
         throw new Error(pNumber + ' is not a number.');
     }

@@ -1,5 +1,13 @@
 function factorial(pNumber) {
 
+    if ('object' === typeof pNumber) {
+        throw new Error(pNumber + ' is not a number.');
+    }
+
+    if (null === pNumber) {
+        throw new Error(pNumber + ' is not a number.');
+    }
+
     if (undefined === pNumber) {
         throw new Error(pNumber + ' is not a number.');
     }

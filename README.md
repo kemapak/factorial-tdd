@@ -4,7 +4,7 @@ Test Driven Development Tutorial with Factorial Example.
 
 Code examples and walkthrough of how to write unit test using TDD approach.
 
-After to set up the project please read [Factorial TDD](factorial-tdd.md) and follow the step by step examples.
+After to set up the examples please read [Factorial TDD](factorial-tdd.md) and follow the step by step examples.
 
 The project is written in JavaScript using JEST Unit Testing Framework.
 
@@ -32,6 +32,7 @@ JEST unit testing framework is used in the project but can be replaced with any 
 You can run the tests in your IDE or in the command line.
 
 To run all the test with NPM.
+
 ```sh
 npm test
 ```
@@ -53,11 +54,14 @@ Distributed under the MIT license. See (LICENSE)[LICENSE.MD] for more informatio
 
 ## Software Notes
 
-I am hoping the code and articles I shared are helpful. You can always reach me for any questions, comments.
+I am hoping the code and article I shared is helpful. You can always reach me for any questions, comments.
 
 Kem Apak
+
 :[http://www.softwarenotes.net](http://www.softwarenotes.net)
+
 :[@softwarenotes](https://twitter.com/softwarenotes)
+
 :[https://github.com/kemapak](https://github.com/kemapak)
 
 

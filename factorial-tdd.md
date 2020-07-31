@@ -178,7 +178,8 @@ See `/src/index.07.js`
 		```javascript
 		test('Undefined parameter should throw an exception.', () => {
 			function wrapper() {
-				factorial();
+				let x;
+				factorial(x);
 			}
 			expect(wrapper).toThrow('undefined is not a number.');
 		});
@@ -188,7 +189,7 @@ See `/src/index.07.js`
 See `/src/index.08.js`
 
 		```javascript
-		if ('undefined' === typeof pNumber) {
+		if (undefined === pNumber) {
 			throw new Error(pNumber + ' is not a number.');
 		}
 		```
@@ -196,22 +197,67 @@ See `/src/index.08.js`
 - Repeat for __Given x = null, should throw an exception (null)__
 	1. Write the test, run the test. Test fails... See `/test/index.09.test.js`
 
+		```javascript
+		test('Null parameter should throw an exception.', () => {
+			function wrapper() {
+				let x = null;
+				factorial(x);
+			}
+			expect(wrapper).toThrow('null is not a number.');
+		});
+		```
+		
 	1. Write the code, run the test (fix the code until the test passes)
 See `/src/index.09.js`
 
-1. Repeat for __Given x = {chapter: 1}, should throw an exception (object)__
+		```javascript
+		if (null === pNumber) {
+			throw new Error(pNumber + ' is not a number.');
+		}
+		```
+
+- Repeat for __Given x = {chapter: 1}, should throw an exception (object)__
 	1. Write the test, run the test. Test fails... See `/test/index.10.test.js`
+
+		```javascript
+		test('Object parameter should throw an exception.', () => {
+				function wrapper() {
+					let x = {chapter: 1};
+					factorial(x);
+				}
+				expect(wrapper).toThrow('[object Object] is not a number.');
+		});
+		```
 
 	1. Write the code, run the test (fix the code until the test passes)
 See `/src/index.10.js`
 
+		```javascript
+		if ('object' === typeof pNumber) {
+			throw new Error(pNumber + ' is not a number.');
+		}
+		```
+
 1. Repeat for __Given x is not passed , should throw an exception (no parameter passed)__
-	1. Write the test, run the test. Test fails... See `/test/index.11.test.js`
+	1. Write the test, run the test. ==**Test Passes**==... See `/test/index.11.test.js`. It turns out that not passing a parameter and passing an uninitialized variable as parameter throw the same exception. They are both `undefined`. 
 
-	1. Write the code, run the test (fix the code until the test passes)
-See `/src/index.11.js`
+		| No Parameter  | Undefined Variable     |
+		|:--            |:--                     |
+		| `factorial();`| `let x; factorial(x);` |
 
-We might add some more tests but the ones we have so far cover almost all the use cases good and bad.
+		```javascript
+		test('No parameter should throw an exception.', () => {
+			function wrapper() {
+				factorial();
+			}
+			expect(wrapper).toThrow('undefined is not a number.');
+		});
+		```
+
+	1. We do not need to write any additional code, but we do need to start thinking about making our code better. Re organizing, refactoring.
+See `/src/index.11.js` (No change compare to `index.10.js`.)
+
+We might add some more tests but the ones we have so far covered almost all the use cases the happy path and the unhappy path.
 
 ## Refactor and optimize your code.
 
