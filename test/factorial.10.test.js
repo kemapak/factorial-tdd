@@ -1,4 +1,4 @@
-const factorial = require('../src/index.10.js');
+const factorial = require('../src/factorial.10.js');
 
 describe('Given a factorial number.', () => {
 

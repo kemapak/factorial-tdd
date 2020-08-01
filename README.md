@@ -40,7 +40,7 @@ npm test
 or to run a single test suite with JEST
 
 ```sh
-jest /test/index.01.test.js
+jest /test/factorial.01.test.js
 ```
 
 ## Release History

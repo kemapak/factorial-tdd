@@ -29,9 +29,10 @@ Do not think about the code! Think about the use cases and tests
 
 Think about one and only one example, one simple use case, a simple happy path. Think it's result, what should it be. Write the test for it than the code.
 
+---
 - __Given x = 0, then the factorial should be 1__
 	
-	1. Write the test, run the test. Test fails... See `/test/index.01.test.js` We should not even create the file for the actual file at this stage.
+	1. Write the test, run the test. Test fails... See `/test/factorial.01.test.js` We should not even create the file for the actual file at this stage.
 
 		```javascript
 		test('0! should be 1', () => {
@@ -39,17 +40,18 @@ Think about one and only one example, one simple use case, a simple happy path. 
 		});
 		```
 
-	1. Now we write the code, run the test (fix the code until the test passes) See `/src/index.01.js`
+	1. Now we write the code, run the test (fix the code until the test passes) See `/src/factorial.01.js`
 
 		```javascript
 		if (0 === parameter) {
 			return 1;
 		}
 		```
+
 ---
 - Repeat for __Given x = 1, then the factorial should be 1__
 
-	1. Write the test, run the test. Test fails... See `/test/index.02.test.js`
+	1. Write the test, run the test. Test fails... See `/test/factorial.02.test.js`
 
 		```javascript
 		test('1! should be 1', () => {
@@ -58,17 +60,18 @@ Think about one and only one example, one simple use case, a simple happy path. 
 		```
 		
 	1. Write the code, run the test (fix the code until the test passes)
-See `/src/index.02.js`
+See `/src/factorial.02.js`
 
 		```javascript
 		if (1 === parameter) {
 			return 1;
 		}
 		```
+
 ---
 - Repeat for __Given x = 5, then the factorial should be 120 (5 * 4 * 3 * 2 *  1)__
 
-	1. Write the test, run the test. Test fails... See `/test/index.03.test.js`
+	1. Write the test, run the test. Test fails... See `/test/factorial.03.test.js`
 
 		```javascript
 		test('5! should be 120', () => {
@@ -77,7 +80,7 @@ See `/src/index.02.js`
 		```
     
 	1. Write the code, run the test (fix the code until the test passes)
-See `/src/index.03.js`
+See `/src/factorial.03.js`
 
 		```javascript
 		if (parameter > 1) {
@@ -89,7 +92,7 @@ See `/src/index.03.js`
 
 - Repeat for __Given x = -1, should throw an exception. (negative number)__
 
-	1. Write the test, run the test. Test fails... See `/test/index.04.test.js` _Please note: when checking if the method throws an exception, it has to be wrapped into a function, since JEST cannot accept methods with parameters, that throws an exception. (We will refactor this in the future steps as well.)_
+	1. Write the test, run the test. Test fails... See `/test/factorial.04.test.js` _Please note: when checking if the method throws an exception, it has to be wrapped into a function, since JEST cannot accept methods with parameters, that throws an exception. (We will refactor this in the future steps as well.)_
 
 		```javascript
 		test('Negative parameter should throw an exception.', () => {
@@ -101,16 +104,17 @@ See `/src/index.03.js`
 		```
 
 	1. Write the code, run the test (fix the code until the test passes)
-See `/src/index.04.js`
+See `/src/factorial.04.js`
 
 		```javascript
 		if (parameter < 0) {
 			throw new Error(parameter + ' is a negative number.');
 		}
 		```
+
 ---
 - Repeat for __Given x = 2.3, should throw an exception. (floating number)__
-	1. Write the test, run the test. Test fails... See `/test/index.05.test.js`
+	1. Write the test, run the test. Test fails... See `/test/factorial.05.test.js`
 
 		```javascript
 		test('Decimal parameter should throw an exception.', () => {
@@ -122,16 +126,17 @@ See `/src/index.04.js`
 		```
 
 	1. Write the code, run the test (fix the code until the test passes)
-See `/src/index.05.js`
+See `/src/factorial.05.js`
 
 		```javascript
 		if (parameter !== Math.trunc(parameter)) {
 			throw new Error(parameter + ' is a decimal number.');
 		}
 		```
+
 ---
 - Repeat for __Given x = “x”, should throw an exception. (string)__
-	1. Write the test, run the test. Test fails... See `/test/index.06.test.js`
+	1. Write the test, run the test. Test fails... See `/test/factorial.06.test.js`
 
 		```javascript
 		test('String parameter should throw an exception.', () => {
@@ -143,16 +148,17 @@ See `/src/index.05.js`
 		```
 
 	1. Write the code, run the test (fix the code until the test passes)
-See `/src/index.06.js`
+See `/src/factorial.06.js`
 
 		```javascript
 		if ('string' === typeof parameter) {
 			throw new Error(parameter + ' is not a number.');
 		}
 		```
+
 ---
 - Repeat for __Given x = true, should throw an exception (boolean)__
-	1. Write the test, run the test. Test fails... See `/test/index.07.test.js`
+	1. Write the test, run the test. Test fails... See `/test/factorial.07.test.js`
 
 		```javascript
 		test('Boolean parameter should throw an exception.', () => {
@@ -164,16 +170,17 @@ See `/src/index.06.js`
 		```
 
 	1. Write the code, run the test (fix the code until the test passes)
-See `/src/index.07.js`
+See `/src/factorial.07.js`
 
 		```javascript
 		if ('boolean' === typeof parameter) {
 			throw new Error(parameter + ' is not a number.');
 		}
 		```
+
 ---
 - Repeat for __Given x = undefined, should throw an exception (undefined)__
-	1. Write the test, run the test. Test fails... See `/test/index.08.test.js`
+	1. Write the test, run the test. Test fails... See `/test/factorial.08.test.js`
 
 		```javascript
 		test('Undefined parameter should throw an exception.', () => {
@@ -186,16 +193,17 @@ See `/src/index.07.js`
 		```
 
 	1. Write the code, run the test (fix the code until the test passes)
-See `/src/index.08.js`
+See `/src/factorial.08.js`
 
 		```javascript
 		if (undefined === parameter) {
 			throw new Error(parameter + ' is not a number.');
 		}
 		```
+
 ---
 - Repeat for __Given x = null, should throw an exception (null)__
-	1. Write the test, run the test. Test fails... See `/test/index.09.test.js`
+	1. Write the test, run the test. Test fails... See `/test/factorial.09.test.js`
 
 		```javascript
 		test('Null parameter should throw an exception.', () => {
@@ -208,7 +216,7 @@ See `/src/index.08.js`
 		```
 		
 	1. Write the code, run the test (fix the code until the test passes)
-See `/src/index.09.js`
+See `/src/factorial.09.js`
 
 		```javascript
 		if (null === parameter) {
@@ -216,8 +224,9 @@ See `/src/index.09.js`
 		}
 		```
 
+---
 - Repeat for __Given x = {chapter: 1}, should throw an exception (object)__
-	1. Write the test, run the test. Test fails... See `/test/index.10.test.js`
+	1. Write the test, run the test. Test fails... See `/test/factorial.10.test.js`
 
 		```javascript
 		test('Object parameter should throw an exception.', () => {
@@ -230,7 +239,7 @@ See `/src/index.09.js`
 		```
 
 	1. Write the code, run the test (fix the code until the test passes)
-See `/src/index.10.js`
+See `/src/factorial.10.js`
 
 		```javascript
 		if ('object' === typeof parameter) {
@@ -238,8 +247,9 @@ See `/src/index.10.js`
 		}
 		```
 
-1. Repeat for __Given x is not passed , should throw an exception (no parameter passed)__
-	1. Write the test, run the test. ==**Test Passes**==... See `/test/index.11.test.js`. It turns out that not passing a parameter and passing an uninitialized variable as parameter throw the same exception. They are both `undefined`. 
+---
+- Repeat for __Given x is not passed , should throw an exception (no parameter passed)__
+	1. Write the test, run the test. Tests do pass. See `/test/factorial.11.test.js`. It turns out that not passing a parameter and passing an uninitialized variable as parameter throw the same exception. They are both `undefined`. 
 
 		| No Parameter  | Undefined Variable     |
 		|:--            |:--                     |
@@ -254,14 +264,15 @@ See `/src/index.10.js`
 		});
 		```
 
-	1. We do not need to write any additional code, but we do need to start thinking about making our code better, reorganizing, refactoring.
-See `/src/index.11.js` (No change compare to `index.10.js`.)
+	1. We do not need to write any additional code, but we do need to start thinking about making our code better, reorganizing, refactoring. See `/src/factorial.11.js` (No change compare to `factorial.10.js`.)
 
+---
 We might add some more tests but the ones we have so far covered almost all the use cases the happy path and the unhappy path.
 
 ## Refactor and optimize your code.
 At this point we can have the confidence to easily change our code since have our unit tests. We can makes mistakes, and our test will catch it. If we miss anything we can, and we should add a test for it.
 
+---
 - Instead of checking if parameter is type like a "string", "boolean", "object", "undefined' or "null" we can check if it is a number. Can we replace all below code?
 
 	```javascript
@@ -294,9 +305,10 @@ At this point we can have the confidence to easily change our code since have ou
 	}
 	```
 
-	We change our code, and run our tests. Everything works! Great, we reduced our code from 44 lines to 28 lines. The less code the better. Please see. `/test/index.12.test.js` and `/src/index.12.js`
+	We change our code, and run our tests. Everything works! Great, we reduced our code from 44 lines to 28 lines. The less code the better. Please see. `/test/factorial.12.test.js` and `/src/factorial.12.js`
 
-- “FUNCTIONS SHOULD DO ONE THING. THEY SHOULD DO IT WELL. THEY SHOULD DO IT ONLY.” [^1]. We will use the ==**extract method**== refactoring pattern [^2] in this enhancement. In our code we are checking if our parameter is a valid whole number. That code should go to its own method and we should call it from the factorial. We are creating a dependency here but we will manage that as well in this example.
+---
+- “FUNCTIONS SHOULD DO ONE THING. THEY SHOULD DO IT WELL. THEY SHOULD DO IT ONLY.” <sup>[1][1]</sup>. We will use the _extract method_ refactoring pattern <sup>[2][2]</sup> in this enhancement. In our code we are checking if our parameter is a valid whole number. That code should go to its own method and we should call it from the factorial. We are creating a dependency here but we will manage that as well in this example.
 
 	We should extract the following logic into its own method.	 We can update our code to check if the parameter is a whole number return true else return false. 
 	
@@ -335,8 +347,9 @@ At this point we can have the confidence to easily change our code since have ou
 	}
 	```
 	
-	Now our factorial code is down to 15 lines, great! But when we run our test they fail. We need to update the exception text in our tests to =="is not a whole number."==. Now all our test do pass. Please see `/test/index.12.test.js` and `/src/index.12.js`.
+	Now our factorial code is down to 15 lines, great! But when we run our test they fail. We need to update the exception text in our tests to **"is not a whole number"**. Now all our test do pass. Please see `/test/factorial.12.test.js` and `/src/factorial.12.js`.
 	
+---
 - From the last example we still have several problems. First changing the exception, error text in multiple places. We need do something about this. Second, isWholeNumber is a private internal function. It is not possible to test it explicitly we need to make it a part of a utility class. We need to create a math utility class and make both factorial and isWholeNumber methods of it.
 
 	1. First let refactor our implementation and test file names to MathUtil, do not change the actual code except the reference to the file import. Please see `/test/MathUtil.01.test.js` and `/src/MathUtil.01.js`. Run our test all pass.
@@ -395,7 +408,7 @@ At this point we can have the confidence to easily change our code since have ou
 		}
 		```
 
-	1. Let us externalize the hard coded exception text. This refactoring pattern is called ==Replace Magic Literal== [^3]. We add the static messages to the MathUtil class and update all the references both in MathUtil and MathUtil test. Please see `/test/MathUtil.03.test.js` and `/src/MathUtil.03.js`.
+	1. Let us externalize the hard coded exception text. This refactoring pattern is called _Replace Magic Literal_ <sup>[3][3]</sup>. We add the static messages to the MathUtil class and update all the references both in MathUtil and MathUtil test. Please see `/test/MathUtil.03.test.js` and `/src/MathUtil.03.js`.
 
 		```javascript
 		static messages = {
@@ -409,19 +422,25 @@ At this point we can have the confidence to easily change our code since have ou
 		expect(wrapper).toThrow('-5' + MathUtil.messages.NOT_A_WHOLE_NUMBER);
 		```
 
+---
 - We also should convert our wrapper functions to arrow functions. The code will look way more cleaner and smaller. We will not change the implementation code, only the tests. Please see `/test/MathUtil.04.test.js` and `/src/MathUtil.04.js`.
 
 	```javascript
 	expect( () => MathUtil.factorial(-5)).toThrow('-5' + MathUtil.messages.NOT_A_WHOLE_NUMBER);
 	```
 
+---
 - Lastly we need to split the tests for MathUtil.isWholeNumber and MathUtil.factorial into separate test suites. Please keep in mind redundancy in testing is a good thing, so all the tests that apply to whole numbers will be copied into whole number suite. Please see `/test/MathUtil.test.js` and `/src/MathUtil.js` for final versions.
 
 ## Final thoughts 
-Unit tests are the heart and soul of software development. I would highly recommend [xUnit Test Patterns: Refactoring Test Code, by Gerard Meszaros] (https://www.informit.com/store/xunit-test-patterns-refactoring-test-code-9780131495050) if you want learn the testing design patterns. Test code will get messy and just like any code needs affection, time and refactoring. Finally we all software engineer are indebted to [Kent Beck](https://www.kentbeck.com) for TDD and yes I agree with him "Good code matters"!  
+Unit tests are the heart and soul of software development. I would highly recommend [xUnit Test Patterns\: Refactoring Test Code, by Gerard Meszaros] (https://www.informit.com/store/xunit-test-patterns-refactoring-test-code-9780131495050) if you want learn the testing design patterns. Test code will get messy and just like any code needs affection, time and refactoring. Finally we all software engineers are indebted to [Kent Beck](https://www.kentbeck.com) for TDD and yes "Good code matters"!  
 
-[^1]: [Clean Code: A Handbook of Agile Software Craftsmanship, by Bob "Uncle" Martin](https://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884) -- Chapter 6, Extract Function
+---
+[1]: 1
+1 [Clean Code: A Handbook of Agile Software Craftsmanship, by Bob "Uncle" Martin](https://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884) -- Chapter 3, Function 
 
-[^2]: [Refactoring: Improving the Design of Existing Code, 2nd Edition, by Martin Fowler.](https://www.informit.com/store/refactoring-improving-the-design-of-existing-code-9780134757599) -- Extract Function.
+[2]: 2
+2 [Refactoring: Improving the Design of Existing Code, 2nd Edition, by Martin Fowler.](https://www.informit.com/store/refactoring-improving-the-design-of-existing-code-9780134757599) -- Extract Functions.
 
-[^3]: [Refactoring: Improving the Design of Existing Code, 2nd Edition, by Martin Fowler.](https://www.informit.com/store/refactoring-improving-the-design-of-existing-code-9780134757599) -- Replace Magic Literal.
+[3]: 3
+3 [Refactoring: Improving the Design of Existing Code, 2nd Edition, by Martin Fowler.](https://www.informit.com/store/refactoring-improving-the-design-of-existing-code-9780134757599) -- Replace Magic Literal.

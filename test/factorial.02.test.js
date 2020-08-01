@@ -1,4 +1,4 @@
-const factorial = require('../src/index.03.js');
+const factorial = require('../src/factorial.02.js');
 
 describe('Given a factorial number.', () => {
 
@@ -8,9 +8,5 @@ describe('Given a factorial number.', () => {
 
     test('1! should be 1', () => {
         expect(factorial(1)).toBe(1);
-    });
-
-    test('5! should be 120', () => {
-        expect(factorial(5)).toBe(120);
     });
 });

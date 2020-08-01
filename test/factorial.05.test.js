@@ -1,4 +1,4 @@
-const factorial = require('../src/index.04.js');
+const factorial = require('../src/factorial.05.js');
 
 describe('Given a factorial number.', () => {
 
@@ -20,5 +20,13 @@ describe('Given a factorial number.', () => {
         }
 
         expect(wrapper).toThrow('-5 is a negative number.');
+    });
+
+    test('Decimal parameter should throw an exception.', () => {
+        function wrapper() {
+            factorial(2.3);
+        }
+
+        expect(wrapper).toThrow('2.3 is a decimal number.');
     });
 });
