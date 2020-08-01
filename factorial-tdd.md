@@ -42,7 +42,7 @@ Think about one and only one example, one simple use case, a simple happy path. 
 	1. Now we write the code, run the test (fix the code until the test passes) See `/src/index.01.js`
 
 		```javascript
-		if (0 === pNumber) {
+		if (0 === parameter) {
 			return 1;
 		}
 		```
@@ -61,7 +61,7 @@ Think about one and only one example, one simple use case, a simple happy path. 
 See `/src/index.02.js`
 
 		```javascript
-		if (1 === pNumber) {
+		if (1 === parameter) {
 			return 1;
 		}
 		```
@@ -80,8 +80,8 @@ See `/src/index.02.js`
 See `/src/index.03.js`
 
 		```javascript
-		if (pNumber > 1) {
-			return pNumber * factorial(pNumber - 1);
+		if (parameter > 1) {
+			return parameter * factorial(parameter - 1);
 		}
 		```
 
@@ -104,8 +104,8 @@ See `/src/index.03.js`
 See `/src/index.04.js`
 
 		```javascript
-		if (pNumber < 0) {
-			throw new Error(pNumber + ' is a negative number.');
+		if (parameter < 0) {
+			throw new Error(parameter + ' is a negative number.');
 		}
 		```
 ---
@@ -125,8 +125,8 @@ See `/src/index.04.js`
 See `/src/index.05.js`
 
 		```javascript
-		if (pNumber !== Math.trunc(pNumber)) {
-			throw new Error(pNumber + ' is a decimal number.');
+		if (parameter !== Math.trunc(parameter)) {
+			throw new Error(parameter + ' is a decimal number.');
 		}
 		```
 ---
@@ -146,8 +146,8 @@ See `/src/index.05.js`
 See `/src/index.06.js`
 
 		```javascript
-		if ('string' === typeof pNumber) {
-			throw new Error(pNumber + ' is not a number.');
+		if ('string' === typeof parameter) {
+			throw new Error(parameter + ' is not a number.');
 		}
 		```
 ---
@@ -167,8 +167,8 @@ See `/src/index.06.js`
 See `/src/index.07.js`
 
 		```javascript
-		if ('boolean' === typeof pNumber) {
-			throw new Error(pNumber + ' is not a number.');
+		if ('boolean' === typeof parameter) {
+			throw new Error(parameter + ' is not a number.');
 		}
 		```
 ---
@@ -189,8 +189,8 @@ See `/src/index.07.js`
 See `/src/index.08.js`
 
 		```javascript
-		if (undefined === pNumber) {
-			throw new Error(pNumber + ' is not a number.');
+		if (undefined === parameter) {
+			throw new Error(parameter + ' is not a number.');
 		}
 		```
 ---
@@ -211,8 +211,8 @@ See `/src/index.08.js`
 See `/src/index.09.js`
 
 		```javascript
-		if (null === pNumber) {
-			throw new Error(pNumber + ' is not a number.');
+		if (null === parameter) {
+			throw new Error(parameter + ' is not a number.');
 		}
 		```
 
@@ -233,8 +233,8 @@ See `/src/index.09.js`
 See `/src/index.10.js`
 
 		```javascript
-		if ('object' === typeof pNumber) {
-			throw new Error(pNumber + ' is not a number.');
+		if ('object' === typeof parameter) {
+			throw new Error(parameter + ' is not a number.');
 		}
 		```
 
@@ -254,13 +254,174 @@ See `/src/index.10.js`
 		});
 		```
 
-	1. We do not need to write any additional code, but we do need to start thinking about making our code better. Re organizing, refactoring.
+	1. We do not need to write any additional code, but we do need to start thinking about making our code better, reorganizing, refactoring.
 See `/src/index.11.js` (No change compare to `index.10.js`.)
 
 We might add some more tests but the ones we have so far covered almost all the use cases the happy path and the unhappy path.
 
 ## Refactor and optimize your code.
+At this point we can have the confidence to easily change our code since have our unit tests. We can makes mistakes, and our test will catch it. If we miss anything we can, and we should add a test for it.
 
-We can update your code to check if the parameter is a whole number else throw the exception. 
-Delete conditionals for string, boolean, object, etc.
-We still make sure it is a whole number (we need to check to make sure it is not negative or a floating number)
+- Instead of checking if parameter is type like a "string", "boolean", "object", "undefined' or "null" we can check if it is a number. Can we replace all below code?
+
+	```javascript
+	if ('object' === typeof parameter) {
+		throw new Error(parameter + ' is not a number.');
+	}
+	
+	if (null === parameter) {
+		throw new Error(parameter + ' is not a number.');
+	}
+	
+	if (undefined === parameter) {
+		throw new Error(parameter + ' is not a number.');
+	}
+	
+	if ('boolean' === typeof parameter) {
+		throw new Error(parameter + ' is not a number.');
+	}
+	
+	if ('string' === typeof parameter) {
+		throw new Error(parameter + ' is not a number.');
+	}
+	```
+
+	With just one conditional, one if statement?
+
+	```javascript
+	if ('number' !== typeof parameter) {
+		throw new Error(parameter + ' is not a number.');
+	}
+	```
+
+	We change our code, and run our tests. Everything works! Great, we reduced our code from 44 lines to 28 lines. The less code the better. Please see. `/test/index.12.test.js` and `/src/index.12.js`
+
+- “FUNCTIONS SHOULD DO ONE THING. THEY SHOULD DO IT WELL. THEY SHOULD DO IT ONLY.” [^1]. We will use the ==**extract method**== refactoring pattern [^2] in this enhancement. In our code we are checking if our parameter is a valid whole number. That code should go to its own method and we should call it from the factorial. We are creating a dependency here but we will manage that as well in this example.
+
+	We should extract the following logic into its own method.	 We can update our code to check if the parameter is a whole number return true else return false. 
+	
+	```javascript
+	if ('number' !== typeof parameter) {
+		throw new Error(parameter + ' is not a number.');
+	}
+	
+	if (parameter < 0) {
+		throw new Error(parameter + ' is a negative number.');
+	}
+	
+	if (parameter !== Math.trunc(parameter)) {
+		throw new Error(parameter + ' is a decimal number.');
+	}
+	```
+
+	into 
+
+	```javascript
+	function isWholeNumber(parameter) {
+	
+		if ('number' !== typeof parameter) {
+			return false;
+		}
+		
+		if (parameter < 0) {
+			return false;
+		}
+		
+		if (parameter !== Math.trunc(parameter)) {
+			return false;
+		}
+		
+		return true;
+	}
+	```
+	
+	Now our factorial code is down to 15 lines, great! But when we run our test they fail. We need to update the exception text in our tests to =="is not a whole number."==. Now all our test do pass. Please see `/test/index.12.test.js` and `/src/index.12.js`.
+	
+- From the last example we still have several problems. First changing the exception, error text in multiple places. We need do something about this. Second, isWholeNumber is a private internal function. It is not possible to test it explicitly we need to make it a part of a utility class. We need to create a math utility class and make both factorial and isWholeNumber methods of it.
+
+	1. First let refactor our implementation and test file names to MathUtil, do not change the actual code except the reference to the file import. Please see `/test/MathUtil.01.test.js` and `/src/MathUtil.01.js`. Run our test all pass.
+
+	1. Let us create MathUtil class and make factorial and isWholeNumber it's methods. Run tests, they fail, update reference to function `factorial` to `MathUtil.factorial` method. Run tests, they pass. Please see `/test/MathUtil.02.test.js` and `/src/MathUtil.02.js`.
+
+		```javascript
+		class MathUtil {
+		
+			/**
+			* Check if a number is a whole number. In other words, a number that is 0 or a positive integer.
+			* @param parameter {number}
+			* @returns {boolean}
+			*/
+			static isWholeNumber(parameter) {
+			
+				if ('number' !== typeof parameter) {
+					return false;
+				}
+				
+				if (parameter < 0) {
+					return false;
+				}
+				
+				if (parameter !== Math.trunc(parameter)) {
+					return false;
+				}
+				
+				return true;
+			}
+			
+			/**
+			* Calculates of a given whole number.
+			* @param parameter {number} Whole number.
+			* @returns {number}
+			* @throws {Error} Not a whole number.
+			*/
+			static factorial(parameter) {
+			
+				if (false === MathUtil.isWholeNumber(parameter)) {
+					throw new Error(parameter + ' is not a whole number.');
+				}
+				
+				if (0 === parameter) {
+					return 1;
+				}
+				
+				if (1 === parameter) {
+					return 1;
+				}
+				
+				if (parameter > 1) {
+					return parameter * MathUtil.factorial(parameter - 1);
+				}
+			}
+		}
+		```
+
+	1. Let us externalize the hard coded exception text. This refactoring pattern is called ==Replace Magic Literal== [^3]. We add the static messages to the MathUtil class and update all the references both in MathUtil and MathUtil test. Please see `/test/MathUtil.03.test.js` and `/src/MathUtil.03.js`.
+
+		```javascript
+		static messages = {
+			NOT_A_WHOLE_NUMBER: ' is not a whole number.'
+		}
+		```
+
+		The references will look like below. Keep in mind MathUtil is a static class.
+		
+		```javascript
+		expect(wrapper).toThrow('-5' + MathUtil.messages.NOT_A_WHOLE_NUMBER);
+		```
+
+- We also should convert our wrapper functions to arrow functions. The code will look way more cleaner and smaller. We will not change the implementation code, only the tests. Please see `/test/MathUtil.04.test.js` and `/src/MathUtil.04.js`.
+
+	```javascript
+	expect( () => MathUtil.factorial(-5)).toThrow('-5' + MathUtil.messages.NOT_A_WHOLE_NUMBER);
+	```
+
+- Lastly we need to split the tests for MathUtil.isWholeNumber and MathUtil.factorial into separate test suites. Please keep in mind redundancy in testing is a good thing, so all the tests that apply to whole numbers will be copied into whole number suite. Please see `/test/MathUtil.test.js` and `/src/MathUtil.js` for final versions.
+
+## Final thoughts 
+Unit tests are the heart and soul of software development. I would highly recommend [xUnit Test Patterns: Refactoring Test Code, by Gerard Meszaros] (https://www.informit.com/store/xunit-test-patterns-refactoring-test-code-9780131495050) if you want learn the testing design patterns. Test code will get messy and just like any code needs affection, time and refactoring. Finally we all software engineer are indebted to [Kent Beck](https://www.kentbeck.com) for TDD and yes I agree with him "Good code matters"!  
+
+[^1]: [Clean Code: A Handbook of Agile Software Craftsmanship, by Bob "Uncle" Martin](https://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884) -- Chapter 6, Extract Function
+
+[^2]: [Refactoring: Improving the Design of Existing Code, 2nd Edition, by Martin Fowler.](https://www.informit.com/store/refactoring-improving-the-design-of-existing-code-9780134757599) -- Extract Function.
+
+[^3]: [Refactoring: Improving the Design of Existing Code, 2nd Edition, by Martin Fowler.](https://www.informit.com/store/refactoring-improving-the-design-of-existing-code-9780134757599) -- Replace Magic Literal.

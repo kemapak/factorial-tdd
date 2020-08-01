@@ -1,10 +1,6 @@
 function factorial(parameter) {
 
-    if ('boolean' === typeof parameter) {
-        throw new Error(parameter + ' is not a number.');
-    }
-
-    if ('string' === typeof parameter) {
+    if ('number' !== typeof parameter) {
         throw new Error(parameter + ' is not a number.');
     }
 

@@ -2,7 +2,7 @@
   "name": "Factorial TDD",
   "version": "1.0.0",
   "description": "Test Driven Development example how to implement factorial with JavaScript and JEST.",
-  "main": "src/index.js",
+  "main": "src/MathUtil.js",
   "scripts": {
     "test": "jest"
   },

@@ -1,19 +1,19 @@
-function factorial(pNumber) {
+function factorial(parameter) {
 
-    if (pNumber < 0) {
-        throw new Error(pNumber + ' is a negative number.');
+    if (parameter < 0) {
+        throw new Error(parameter + ' is a negative number.');
     }
 
-    if (0 === pNumber) {
+    if (0 === parameter) {
         return 1;
     }
 
-    if (1 === pNumber) {
+    if (1 === parameter) {
         return 1;
     }
 
-    if (pNumber > 1) {
-        return pNumber * factorial(pNumber - 1);
+    if (parameter > 1) {
+        return parameter * factorial(parameter - 1);
     }
 }
 

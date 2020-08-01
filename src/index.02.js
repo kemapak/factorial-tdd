@@ -1,10 +1,10 @@
-function factorial(pNumber) {
+function factorial(parameter) {
 
-    if (0 === pNumber) {
+    if (0 === parameter) {
         return 1;
     }
 
-    if (1 === pNumber) {
+    if (1 === parameter) {
         return 1;
     }
 }
