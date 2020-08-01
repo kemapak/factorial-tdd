@@ -308,7 +308,7 @@ At this point we can have the confidence to easily change our code since have ou
 	We change our code, and run our tests. Everything works! Great, we reduced our code from 44 lines to 28 lines. The less code the better. Please see. `/test/factorial.12.test.js` and `/src/factorial.12.js`
 
 ---
-- “FUNCTIONS SHOULD DO ONE THING. THEY SHOULD DO IT WELL. THEY SHOULD DO IT ONLY.” <sup>[1][1]</sup>. We will use the _extract method_ refactoring pattern <sup>[2][2]</sup> in this enhancement. In our code we are checking if our parameter is a valid whole number. That code should go to its own method and we should call it from the factorial. We are creating a dependency here but we will manage that as well in this example.
+- “FUNCTIONS SHOULD DO ONE THING. THEY SHOULD DO IT WELL. THEY SHOULD DO IT ONLY.” <sup>1</sup>. We will use the _extract method_ refactoring pattern <sup>2</sup> in this enhancement. In our code we are checking if our parameter is a valid whole number. That code should go to its own method and we should call it from the factorial. We are creating a dependency here but we will manage that as well in this example.
 
 	We should extract the following logic into its own method.	 We can update our code to check if the parameter is a whole number return true else return false. 
 	
@@ -408,7 +408,7 @@ At this point we can have the confidence to easily change our code since have ou
 		}
 		```
 
-	1. Let us externalize the hard coded exception text. This refactoring pattern is called _Replace Magic Literal_ <sup>[3][3]</sup>. We add the static messages to the MathUtil class and update all the references both in MathUtil and MathUtil test. Please see `/test/MathUtil.03.test.js` and `/src/MathUtil.03.js`.
+	1. Let us externalize the hard coded exception text. This refactoring pattern is called _Replace Magic Literal_ <sup>3</sup>. We add the static messages to the MathUtil class and update all the references both in MathUtil and MathUtil test. Please see `/test/MathUtil.03.test.js` and `/src/MathUtil.03.js`.
 
 		```javascript
 		static messages = {
@@ -436,11 +436,11 @@ At this point we can have the confidence to easily change our code since have ou
 Unit tests are the heart and soul of software development. I would highly recommend [xUnit Test Patterns\: Refactoring Test Code, by Gerard Meszaros] (https://www.informit.com/store/xunit-test-patterns-refactoring-test-code-9780131495050) if you want learn the testing design patterns. Test code will get messy and just like any code needs affection, time and refactoring. Finally we all software engineers are indebted to [Kent Beck](https://www.kentbeck.com) for TDD and yes "Good code matters"!  
 
 ---
-[1]: 1
+[1]: 
 1 [Clean Code: A Handbook of Agile Software Craftsmanship, by Bob "Uncle" Martin](https://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884) -- Chapter 3, Function 
 
-[2]: 2
+[2]: 
 2 [Refactoring: Improving the Design of Existing Code, 2nd Edition, by Martin Fowler.](https://www.informit.com/store/refactoring-improving-the-design-of-existing-code-9780134757599) -- Extract Functions.
 
-[3]: 3
+[3]: 
 3 [Refactoring: Improving the Design of Existing Code, 2nd Edition, by Martin Fowler.](https://www.informit.com/store/refactoring-improving-the-design-of-existing-code-9780134757599) -- Replace Magic Literal.
