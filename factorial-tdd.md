@@ -91,6 +91,8 @@ See `/src/factorial.03.js`
 		}
 		```
 
+		I used recursion heree, but a loop will do the same job. Feel free to use whatever best suites you.
+		
 ## How about the exceptions, negative use cases?
 
 - Repeat for __Given x = -1, should throw an exception. (negative number)__
@@ -457,9 +459,14 @@ At this point we can have the confidence to easily change our code since have ou
 
 ## Code Coverage
 
+**What is code coverage?** Testing all the lines of code (loc or in other words statements), all the branches in the conditionals and all the loops. The result is in percentage. 
+
+One important point; 100% code coverage does not guarantee there will be no errors in your code. You might forget to add an edge case, an alternate happy path. So when the code fails, first thing you have to do is to write the test for it and then implement the fix. This is typical TDD workflow.
+
 We did not get 100% code coverage until the last changes. There are several reasons.
 
-1. If you are using a conditional and a return there must be a default return, which we did not have in initial iterations. Which is fine, when you write your test and code at least until you finish the first entire draft functionality do not try to fix code coverage. We did not cover the "else" or in our case default behavior.
+1. If you are using a conditional and a return from within; there must be a default return of a function; which we did not have in our initial iterations. When you first write your test and code, this is fine. Until you finish the entire functionality, do not try to fix code coverage. Since you do TDD you should be very close to 100% anyway. You will see why do you not hit 100% and refactor your code, you might find some very interesting behavior like we will talk next.
+
 2. There is a very interesting historic behavior of null. Even it is a primitive JavaScript type, the `typeof null` returns an object. Unfortunately this not fixed for backward compatibility. So our `factorial.10.js` and `factorial.11.js` did not cover all the branches.
 
 	```javascript
