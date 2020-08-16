@@ -455,6 +455,25 @@ At this point we can have the confidence to easily change our code since have ou
 
 - Lastly we need to split the tests for MathUtil.isWholeNumber and MathUtil.factorial into separate test suites. Please keep in mind redundancy in testing is a good thing, so all the tests that apply to whole numbers will be copied into whole number suite. Please see `/test/MathUtil.test.js` and `/src/MathUtil.js` for final versions.
 
+## Code Coverage
+
+We did not get 100% code coverage until the last changes. There are several reasons.
+
+1. If you are using a conditional and a return there must be a default return, which we did not have in initial iterations. Which is fine, when you write your test and code at least until you finish the first entire draft functionality do not try to fix code coverage. We did not cover the "else" or in our case default behavior.
+2. There is a very interesting historic behavior of null. Even it is a primitive JavaScript type, the `typeof null` returns an object. Unfortunately this not fixed for backward compatibility. So our `factorial.10.js` and `factorial.11.js` did not cover all the branches.
+
+	```javascript
+	if ('object' === typeof parameter) {
+		throw new Error(parameter + ' is not a number.');
+	}
+	
+	if (null === parameter) {
+		throw new Error(parameter + ' is not a number.');
+	}
+	```
+
+	The second conditional was never hit in our tests, since `'object' === typeof parameter` short circuited when we test `null` parameter.
+
 ## Final thoughts 
 Unit tests are the heart and soul of software development. I would highly recommend [xUnit Test Patterns: Refactoring Test Code, by Gerard Meszaros](https://www.informit.com/store/xunit-test-patterns-refactoring-test-code-9780131495050) if you want learn the testing design patterns. Test code will get messy and just like any code needs affection, time and refactoring. Finally we are all software engineers are indebted to [Kent Beck](https://www.kentbeck.com) for TDD and yes "Good code matters!".  
 
