@@ -444,6 +444,13 @@ At this point we can have the confidence to easily change our code since have ou
 	expect( () => MathUtil.factorial(-5)).toThrow('-5' + MathUtil.messages.NOT_A_WHOLE_NUMBER);
 	```
 
+	Also the last conditional in our MathUtil.factorial is not necessary since we cover hopefully all the cases. A well written method by default always must return a value if there is no exception thrown.
+	
+	```javascript
+	// parameter > 1
+	return parameter * MathUtil.factorial(parameter - 1);
+	```		
+			
 ---
 
 - Lastly we need to split the tests for MathUtil.isWholeNumber and MathUtil.factorial into separate test suites. Please keep in mind redundancy in testing is a good thing, so all the tests that apply to whole numbers will be copied into whole number suite. Please see `/test/MathUtil.test.js` and `/src/MathUtil.js` for final versions.

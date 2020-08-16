@@ -43,9 +43,8 @@ class MathUtil {
 			return 1;
 		}
 
-		if (parameter > 1) {
-			return parameter * MathUtil.factorial(parameter - 1);
-		}
+		// parameter > 1
+		return parameter * MathUtil.factorial(parameter - 1);
 	}
 }
 
