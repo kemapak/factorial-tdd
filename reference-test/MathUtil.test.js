@@ -1,4 +1,4 @@
-const MathUtil = require('../src-reference/MathUtil.js');
+const MathUtil = require('../reference-src/MathUtil.js');
 
 describe('Given a whole number.', () => {
 	test('0 should be true', () => {

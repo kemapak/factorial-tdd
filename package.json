@@ -1,6 +1,6 @@
 {
-  "name": "Factorial TDD",
-  "version": "1.0.0",
+  "name": "Factorial-TDD",
+  "version": "1.0.1",
   "description": "Test Driven Development example how to implement factorial with JavaScript and JEST.",
   "main": "src/MathUtil.js",
   "scripts": {

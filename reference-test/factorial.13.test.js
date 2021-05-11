@@ -1,4 +1,4 @@
-const factorial = require('../src-reference/factorial.13.js');
+const factorial = require('../reference-src/factorial.13.js');
 
 describe('Given a factorial number.', () => {
 	test('0! should be 1', () => {

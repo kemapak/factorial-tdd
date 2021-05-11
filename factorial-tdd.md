@@ -482,6 +482,9 @@ We did not get 100% code coverage until the last changes. There are several reas
 	The second conditional was never hit in our tests, since `'object' === typeof parameter` short circuited when we test `null` parameter.
 
 ## Final thoughts 
+
+Like Edward Demming once said, Inspection is too late. The quality, good or bad, is already build-in the product. Which without unit tests it is very hard if not impossible to talk about code quality.
+
 Unit tests are the heart and soul of software development. I would highly recommend [xUnit Test Patterns: Refactoring Test Code, by Gerard Meszaros](https://www.informit.com/store/xunit-test-patterns-refactoring-test-code-9780131495050) if you want learn the testing design patterns. Test code will get messy and just like any code needs affection, time and refactoring. Finally we are all software engineers are indebted to [Kent Beck](https://www.kentbeck.com) for TDD and yes "Good code matters!".  
 
 ---

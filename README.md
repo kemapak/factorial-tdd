@@ -23,8 +23,10 @@ npm install
 Please read [Factorial TDD](factorial-tdd.md)
 Follow the step by step examples.
 
+All the reference tests and Implementations are located under `reference-test` and `reference-src` folders.
+
 Tests are located under `test` folder.
-Implementations are located under `src` folder.
+Implementations are located under `src` folder. Which you will write.
 
 ## Running The Tests
 JEST unit testing framework is used in the project but can be replaced with any library you want.
@@ -40,7 +42,7 @@ npm test
 or to run a single test suite with JEST
 
 ```sh
-jest /test/factorial.01.test.js
+jest /test/factorial.test.js
 ```
 
 ## Release History
@@ -48,6 +50,9 @@ jest /test/factorial.01.test.js
 * 1.0.0
 	* Article.
 	* Code Examples
+* 1.0.1
+	* Updates to structure and article.
+	* Minor fix in the package name.
 
 ## License
 Distributed under the MIT license. See (LICENSE)[LICENSE.MD] for more information.

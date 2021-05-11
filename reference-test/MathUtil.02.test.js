@@ -1,4 +1,4 @@
-const MathUtil = require('../src-reference/MathUtil.02.js');
+const MathUtil = require('../reference-src/MathUtil.02.js');
 
 describe('Given a factorial number.', () => {
 	test('0! should be 1', () => {
