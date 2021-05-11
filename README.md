@@ -55,7 +55,7 @@ jest /test/factorial.test.js
 	* Minor fix in the package name.
 
 ## License
-Distributed under the MIT license. See (LICENSE)[LICENSE.MD] for more information.
+Distributed under the MIT license. See [LICENSE] (LICENSE.MD) for more information.
 
 ## Software Notes
 
