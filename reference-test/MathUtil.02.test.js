@@ -1,4 +1,4 @@
-const MathUtil = require('../src/MathUtil.03.js');
+const MathUtil = require('../src-reference/MathUtil.02.js');
 
 describe('Given a factorial number.', () => {
 	test('0! should be 1', () => {
@@ -18,7 +18,7 @@ describe('Given a factorial number.', () => {
 			MathUtil.factorial(-5);
 		}
 
-		expect(wrapper).toThrow('-5' + MathUtil.messages.NOT_A_WHOLE_NUMBER);
+		expect(wrapper).toThrow('-5 is not a whole number.');
 	});
 
 	test('Decimal parameter should throw an exception.', () => {
@@ -26,7 +26,7 @@ describe('Given a factorial number.', () => {
 			MathUtil.factorial(2.3);
 		}
 
-		expect(wrapper).toThrow('2.3' + MathUtil.messages.NOT_A_WHOLE_NUMBER);
+		expect(wrapper).toThrow('2.3 is not a whole number.');
 	});
 
 	test('String parameter should throw an exception.', () => {
@@ -34,7 +34,7 @@ describe('Given a factorial number.', () => {
 			MathUtil.factorial('x');
 		}
 
-		expect(wrapper).toThrow('x' + MathUtil.messages.NOT_A_WHOLE_NUMBER);
+		expect(wrapper).toThrow('x is not a whole number.');
 	});
 
 	test('Boolean parameter should throw an exception.', () => {
@@ -42,7 +42,7 @@ describe('Given a factorial number.', () => {
 			MathUtil.factorial(true);
 		}
 
-		expect(wrapper).toThrow('true' + MathUtil.messages.NOT_A_WHOLE_NUMBER);
+		expect(wrapper).toThrow('true is not a whole number.');
 	});
 
 	test('Undefined parameter should throw an exception.', () => {
@@ -51,7 +51,7 @@ describe('Given a factorial number.', () => {
 			MathUtil.factorial(x);
 		}
 
-		expect(wrapper).toThrow('undefined' + MathUtil.messages.NOT_A_WHOLE_NUMBER);
+		expect(wrapper).toThrow('undefined is not a whole number.');
 	});
 
 	test('Null parameter should throw an exception.', () => {
@@ -60,7 +60,7 @@ describe('Given a factorial number.', () => {
 			MathUtil.factorial(x);
 		}
 
-		expect(wrapper).toThrow('null' + MathUtil.messages.NOT_A_WHOLE_NUMBER);
+		expect(wrapper).toThrow('null is not a whole number.');
 	});
 
 	test('Object parameter should throw an exception.', () => {
@@ -69,7 +69,7 @@ describe('Given a factorial number.', () => {
 			MathUtil.factorial(x);
 		}
 
-		expect(wrapper).toThrow('[object Object]' + MathUtil.messages.NOT_A_WHOLE_NUMBER);
+		expect(wrapper).toThrow('[object Object] is not a whole number.');
 	});
 
 	test('No parameter should throw an exception.', () => {
@@ -77,6 +77,6 @@ describe('Given a factorial number.', () => {
 			MathUtil.factorial();
 		}
 
-		expect(wrapper).toThrow('undefined' + MathUtil.messages.NOT_A_WHOLE_NUMBER);
+		expect(wrapper).toThrow('undefined is not a whole number.');
 	});
 });

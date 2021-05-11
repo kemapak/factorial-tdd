@@ -1,4 +1,4 @@
-const factorial = require('../src/factorial.03.js');
+const factorial = require('../src-reference/factorial.04.js');
 
 describe('Given a factorial number.', () => {
 	test('0! should be 1', () => {
@@ -11,5 +11,13 @@ describe('Given a factorial number.', () => {
 
 	test('5! should be 120', () => {
 		expect(factorial(5)).toBe(120);
+	});
+
+	test('Negative parameter should throw an exception.', () => {
+		function wrapper() {
+			factorial(-5);
+		}
+
+		expect(wrapper).toThrow('-5 is a negative number.');
 	});
 });

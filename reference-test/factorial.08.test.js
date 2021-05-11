@@ -1,4 +1,4 @@
-const factorial = require('../src/factorial.11.js');
+const factorial = require('../src-reference/factorial.08.js');
 
 describe('Given a factorial number.', () => {
 	test('0! should be 1', () => {
@@ -49,32 +49,6 @@ describe('Given a factorial number.', () => {
 		function wrapper() {
 			let x;
 			factorial(x);
-		}
-
-		expect(wrapper).toThrow('undefined is not a number.');
-	});
-
-	test('Null parameter should throw an exception.', () => {
-		function wrapper() {
-			let x = null;
-			factorial(x);
-		}
-
-		expect(wrapper).toThrow('null is not a number.');
-	});
-
-	test('Object parameter should throw an exception.', () => {
-		function wrapper() {
-			let x = {chapter: 1};
-			factorial(x);
-		}
-
-		expect(wrapper).toThrow('[object Object] is not a number.');
-	});
-
-	test('No parameter should throw an exception.', () => {
-		function wrapper() {
-			factorial();
 		}
 
 		expect(wrapper).toThrow('undefined is not a number.');

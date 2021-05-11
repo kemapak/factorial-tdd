@@ -1,21 +1,21 @@
-const MathUtil = require('../src/MathUtil.02.js');
+const factorial = require('../src-reference/factorial.13.js');
 
 describe('Given a factorial number.', () => {
 	test('0! should be 1', () => {
-		expect(MathUtil.factorial(0)).toBe(1);
+		expect(factorial(0)).toBe(1);
 	});
 
 	test('1! should be 1', () => {
-		expect(MathUtil.factorial(1)).toBe(1);
+		expect(factorial(1)).toBe(1);
 	});
 
 	test('5! should be 120', () => {
-		expect(MathUtil.factorial(5)).toBe(120);
+		expect(factorial(5)).toBe(120);
 	});
 
 	test('Negative parameter should throw an exception.', () => {
 		function wrapper() {
-			MathUtil.factorial(-5);
+			factorial(-5);
 		}
 
 		expect(wrapper).toThrow('-5 is not a whole number.');
@@ -23,7 +23,7 @@ describe('Given a factorial number.', () => {
 
 	test('Decimal parameter should throw an exception.', () => {
 		function wrapper() {
-			MathUtil.factorial(2.3);
+			factorial(2.3);
 		}
 
 		expect(wrapper).toThrow('2.3 is not a whole number.');
@@ -31,7 +31,7 @@ describe('Given a factorial number.', () => {
 
 	test('String parameter should throw an exception.', () => {
 		function wrapper() {
-			MathUtil.factorial('x');
+			factorial('x');
 		}
 
 		expect(wrapper).toThrow('x is not a whole number.');
@@ -39,7 +39,7 @@ describe('Given a factorial number.', () => {
 
 	test('Boolean parameter should throw an exception.', () => {
 		function wrapper() {
-			MathUtil.factorial(true);
+			factorial(true);
 		}
 
 		expect(wrapper).toThrow('true is not a whole number.');
@@ -48,7 +48,7 @@ describe('Given a factorial number.', () => {
 	test('Undefined parameter should throw an exception.', () => {
 		function wrapper() {
 			let x;
-			MathUtil.factorial(x);
+			factorial(x);
 		}
 
 		expect(wrapper).toThrow('undefined is not a whole number.');
@@ -57,7 +57,7 @@ describe('Given a factorial number.', () => {
 	test('Null parameter should throw an exception.', () => {
 		function wrapper() {
 			let x = null;
-			MathUtil.factorial(x);
+			factorial(x);
 		}
 
 		expect(wrapper).toThrow('null is not a whole number.');
@@ -66,7 +66,7 @@ describe('Given a factorial number.', () => {
 	test('Object parameter should throw an exception.', () => {
 		function wrapper() {
 			let x = {chapter: 1};
-			MathUtil.factorial(x);
+			factorial(x);
 		}
 
 		expect(wrapper).toThrow('[object Object] is not a whole number.');
@@ -74,7 +74,7 @@ describe('Given a factorial number.', () => {
 
 	test('No parameter should throw an exception.', () => {
 		function wrapper() {
-			MathUtil.factorial();
+			factorial();
 		}
 
 		expect(wrapper).toThrow('undefined is not a whole number.');
